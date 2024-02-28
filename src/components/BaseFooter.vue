@@ -11,7 +11,7 @@
 
 </template>
 
-<style>
+<style scoped>
 .footer{
     display: flex;
     flex-direction: row;
