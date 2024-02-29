@@ -1,5 +1,5 @@
 <script setup>
-defineProps(['cardTitle', 'date','time', 'text']);
+defineProps(['cardTitle','time', 'text', 'date']);
 
 
 </script>
@@ -8,6 +8,8 @@ defineProps(['cardTitle', 'date','time', 'text']);
     <div class="card">
         <div class="card-header">
             <h2>{{ cardTitle }}</h2>
+        </div>
+        <div class="card-time">
             <p>{{ time }}</p>
         </div>
         <div class="card-body">
@@ -24,6 +26,11 @@ defineProps(['cardTitle', 'date','time', 'text']);
 .card-header {
     color: gold;
 }
+
+.card-time {
+    color: red;
+}
+
 .card-body {
     color: gold;
 }
