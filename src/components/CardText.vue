@@ -32,6 +32,7 @@ defineProps(['cardTitle','time', 'text', 'date']);
 div, p, h2 {
     margin: 0;
     font-size: 26px;
+    padding: 2px;
 }
 .card{
     display: flex;
@@ -41,19 +42,24 @@ div, p, h2 {
     margin: 20px;
     size: 28px;
     top: 37px;
-    left: 40px;
-    width: 919px;
-    height: 182px;
+    left: 40px; 
+    width: 100%;
+    max-width: 950px;
+    height: fit-content;
     top: 276px;
     left: 60px;
 }
 
 .inner-card{
-    width: 755px;
-    height: 108px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 950px;
+    height: fit-content;
     top: 37px;
     left: 40px;
-    padding: 40px;
+    margin: 40px;
 }
 
 .card-date {

@@ -1,5 +1,5 @@
 <script setup>
-import {onBeforeMount, onMounted, ref} from 'vue';
+import {onBeforeUnmount, onMounted, ref} from 'vue';
 const sheet_id = import.meta.env.VITE_GOOGLE_SHEET_ID;
 const api_token = import.meta.env.VITE_GOOGLE_API_KEY;
 
@@ -20,17 +20,24 @@ async function fetchData() {
   emptyData.value = data.valueRanges[0].values.length; 
 }
 
-onMounted(() => {
-  fetchData();
-})
+const timeInterval = ref("");
 
+fetchData();
+onMounted(() => {
+  timeInterval.value = setInterval(() => {
+    fetchData();
+  }, 1000 * 60 * 30); // wait 30mins for next update (1000 * 60 * 30)
+});
+onBeforeUnmount(() => {
+  clearInterval(timeInterval.value); // clear the interval when the component is destroyed
+});
 
 </script>
 
 <template>
   <!--Header main etc normales html-->
   <header>
-    <BaseHeader title="Welcome to Opportunity"/>
+    <BaseHeader title="Family Metafuni /Strzyzowski Termine"/>
   </header>
 
 <main>
@@ -57,8 +64,8 @@ onMounted(() => {
 
 <style scoped>
 .full-screen-image {
-  width: 100vw;
-  height: 100vh;
+  /* width: 100vw;
+  height: 100vh; */
   object-fit: cover; /* optional: Behält das Seitenverhältnis bei, deckt aber den gesamten Bereich ab */
 }
 </style>
