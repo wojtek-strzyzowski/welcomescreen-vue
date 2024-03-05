@@ -22,6 +22,28 @@ async function fetchData() {
 
 const timeInterval = ref("");
 
+function calculateRemainingTime(event) {
+  const currentTime = new Date();
+  const [day, month, year] = event[1].split('.');
+
+// Erstellen eines Date-Objekts
+  const eventTime = new Date(`${year}-${month}-${day}`);
+
+  const timeDifference = eventTime - currentTime;
+
+  const time = new Date(timeDifference);
+  const days = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
+  console.log(eventTime)
+  console.log(currentTime)
+
+  console.log(time.getUTCDate())
+
+  console.log(timeDifference);
+
+  return days;
+
+}
+
 fetchData();
 onMounted(() => {
   timeInterval.value = setInterval(() => {
@@ -47,7 +69,8 @@ onBeforeUnmount(() => {
     :cardTitle="event[2]"
     :date="event[1]"
     :time="event[0]"
-    :text="event[3]">
+    :text="event[3]"
+    :remainingTime="calculateRemainingTime(event)">
   </CardText>
 </div>
 

@@ -1,5 +1,5 @@
 <script setup>
-defineProps(['cardTitle','time', 'text', 'date']);
+defineProps(['cardTitle','time', 'text', 'date','remainingTime']);
 
 
 </script>
@@ -9,6 +9,7 @@ defineProps(['cardTitle','time', 'text', 'date']);
       <div class="inner-card">
             <div class="card-date">
                 <p>{{ date }}</p>
+                <p>noch{{ remainingTime }} Tag(e)</p>
             </div>
             
             <div class="card-time">

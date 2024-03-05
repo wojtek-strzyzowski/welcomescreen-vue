@@ -13,7 +13,7 @@ onMounted(() => {
 const updateCurrentDate = () => {
   const now = new Date();
   const options = { weekday: 'short', year: 'numeric', day: 'numeric', month: 'numeric' };
-  currentDate.value = now.toLocaleDateString('en-US', options);
+  currentDate.value = now.toLocaleDateString('de-CH', options);
 };
 
 </script>
