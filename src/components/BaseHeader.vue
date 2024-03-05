@@ -31,6 +31,11 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 764px;
+    height: 75px;
+    top: 69px;
+    left: 60px;
+
 }
 
 p {

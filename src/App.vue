@@ -9,27 +9,20 @@ import CardText from '@/components/CardText.vue';
 import BaseFooter from '@/components/BaseFooter.vue';
 // diese Daten kommen später von der API
 
-let fullData;
+let fullData = ref([]);
 
+let emptyData = ref(false);
 
 async function fetchData() {
   const res = await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${sheet_id}/values:batchGet?ranges=A2%3AE100&valueRenderOption=FORMATTED_VALUE&key=${api_token}`);
   const data = await res.json();
-  fullData = data.valueRanges[0].values;
+  fullData.value = data.valueRanges[0].values;
+  emptyData.value = data.valueRanges[0].values.length; 
 }
 
-// let fullData = [
-//   ['13:30', '11.03.2024', 'WS Persönliche Präsentation', 'Badenerstr. 437', ' default'],
-//   ['13:30', '11.03.2024', 'WS Persönliche Präsentation', 'Badenerstr. 437', ' default']
-// ];
-
-
-
-
-
-
-
-fetchData();
+onMounted(() => {
+  fetchData();
+})
 
 
 </script>
@@ -40,7 +33,8 @@ fetchData();
     <BaseHeader title="Welcome to Opportunity"/>
   </header>
 
-
+<main>
+  <div v-if="fullData.length !==0">
   <CardText v-for="(event,index) in fullData"
     :key=index
     :cardTitle="event[2]"
@@ -48,7 +42,12 @@ fetchData();
     :time="event[0]"
     :text="event[3]">
   </CardText>
+</div>
 
+<div v-else>
+    <img class="full-screen-image" src="@/assets/bilder/the-enigmatic-power-of-the-black-aesthetic-u0xe7u4fajxvp3ys.webp" alt="empty">
+  </div>
+</main>
 
 
   <footer>
@@ -57,5 +56,9 @@ fetchData();
 </template>
 
 <style scoped>
-
+.full-screen-image {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover; /* optional: Behält das Seitenverhältnis bei, deckt aber den gesamten Bereich ab */
+}
 </style>
