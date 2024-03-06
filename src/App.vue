@@ -83,7 +83,7 @@ onBeforeUnmount(() => {
 </div>
 
 <div v-else>
-    <img class="full-screen-image" src="@/assets/bilder/the-enigmatic-power-of-the-black-aesthetic-u0xe7u4fajxvp3ys.webp" alt="empty">
+    <img class="full-screen-image" src="@/assets/bilder/the-enigmatic-power-of-the-black-aesthetic-u0xe7u4fajxvp3ys.webp" alt="Dein Terminplaner">
   </div>
 
 </main>
@@ -99,8 +99,6 @@ onBeforeUnmount(() => {
 <style scoped>
 
 .full-screen-image {
-  /* width: 100vw;
-  height: 100vh; */
   object-fit: cover; /* optional: Behält das Seitenverhältnis bei, deckt aber den gesamten Bereich ab */
 }
 
