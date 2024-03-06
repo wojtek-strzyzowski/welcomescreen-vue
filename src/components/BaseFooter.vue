@@ -4,9 +4,9 @@
 
 <template>
     <div class="footer">
-        <img src="@/assets/bilder/STZH_SEB_Logo.png">
-        <img src="@/assets/bilder/SAG_Logo_De.png">
-        <img src="@/assets/bilder/Opportunity.png">
+        <img src="@/assets/bilder/STZH_SEB_Logo.png" alt="logo">
+        <img src="@/assets/bilder/SAG_Logo_De.png"  alt="logo">
+        <img src="@/assets/bilder/Opportunity.png" alt="logo">
     </div>
 
 </template>
