@@ -13,6 +13,7 @@
 
 <style scoped>
 .footer{
+    background-color: white;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;

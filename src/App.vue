@@ -18,10 +18,7 @@ async function fetchData() {
   const data = await res.json();
   fullData.value = data.valueRanges[0].values;
   emptyData.value = data.valueRanges[0].values.length; 
-
 }
-
-
 
 const timeInterval = ref("");
 
@@ -36,14 +33,8 @@ function calculateRemainingTime(event) {
 
   const time = new Date(timeDifference);
   const days = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
-  console.log(eventTime)
-  console.log(currentTime)
- 
-  console.log(time.getUTCDate())
-
-  console.log(timeDifference);
-
-  return days;
+  
+    return days;
 
 }
 
@@ -66,44 +57,56 @@ onBeforeUnmount(() => {
   </header>
 
 <main>
+  
   <div v-if="fullData.length !==0">
     <CardText v-for="(event, index) in fullData.slice().sort((a, b) => {
-  const timeDifferenceA = calculateRemainingTime(a);
-  const timeDifferenceB = calculateRemainingTime(b);
+      const timeDifferenceA = calculateRemainingTime(a);
+      const timeDifferenceB = calculateRemainingTime(b);
 
-  if (timeDifferenceA !== timeDifferenceB) {
-    return timeDifferenceA - timeDifferenceB;
-  } else {
-    // Falls timeDifference gleich ist, sortiere nach time
-    const timeA = new Date(`${a[1]} ${a[0]}`).getTime();
-    const timeB = new Date(`${b[1]} ${b[0]}`).getTime();
-    return timeA - timeB;
-  }
-})"
-:key="index"
-:cardTitle="event[2]"
-:date="event[1]"
-:time="event[0]"
-:text="event[3]"
-:remainingTime="calculateRemainingTime(event)">
-</CardText>
+    if (timeDifferenceA !== timeDifferenceB) {
+      return timeDifferenceA - timeDifferenceB;
+    } else {
+      // Falls timeDifference gleich ist, sortiere nach time
+      const timeA = new Date(`${a[1]} ${a[0]}`).getTime();
+      const timeB = new Date(`${b[1]} ${b[0]}`).getTime();
+      return timeA - timeB;
+    }
+  })"
+      :key="index"
+      :cardTitle="event[2]"
+      :date="event[1]"
+      :time="event[0]"
+      :text="event[3]"
+      :remainingTime="calculateRemainingTime(event)">
+
+  </CardText>
 </div>
 
 <div v-else>
     <img class="full-screen-image" src="@/assets/bilder/the-enigmatic-power-of-the-black-aesthetic-u0xe7u4fajxvp3ys.webp" alt="empty">
   </div>
+
 </main>
 
+<footer>
 
-  <footer>
     <BaseFooter/>
+
   </footer>
+
 </template>
 
 <style scoped>
+
 .full-screen-image {
   /* width: 100vw;
   height: 100vh; */
   object-fit: cover; /* optional: Behält das Seitenverhältnis bei, deckt aber den gesamten Bereich ab */
 }
+
+main {
+  background-color: rgb(40, 129, 189);
+  max-width: 950px;
+}
+
 </style>

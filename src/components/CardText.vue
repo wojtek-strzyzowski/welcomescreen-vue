@@ -1,10 +1,11 @@
 <script setup>
+
 defineProps(['cardTitle','time', 'text', 'date','remainingTime','days']);
-import AppTime from '@/App.vue';
 
 </script>
 
 <template>
+    
     <div class="card">
       <div class="inner-card">
             <div class="card-date">
@@ -39,6 +40,7 @@ div, p, h2 {
     word-break: break-all;
     padding: 2px;
 }
+
 .card{
     display: flex;
     flex-direction: column;
@@ -48,7 +50,6 @@ div, p, h2 {
     size: 28px;
     top: 37px;
     left: 40px; 
-    /* width: 100%; */
     max-width: 900px;
     height: fit-content;
     top: 276px;
@@ -59,7 +60,6 @@ div, p, h2 {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    /* width: 100%; */
     max-width: 900px;
     height: fit-content;
     top: 37px;
@@ -71,6 +71,7 @@ div, p, h2 {
     font-size: 30px;
     margin: 0;
 }
+
 .card-header {
     color: gold;
     font-size: 26px;
