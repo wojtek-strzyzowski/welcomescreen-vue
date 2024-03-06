@@ -18,7 +18,10 @@ async function fetchData() {
   const data = await res.json();
   fullData.value = data.valueRanges[0].values;
   emptyData.value = data.valueRanges[0].values.length; 
+
 }
+
+
 
 const timeInterval = ref("");
 
@@ -35,7 +38,7 @@ function calculateRemainingTime(event) {
   const days = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
   console.log(eventTime)
   console.log(currentTime)
-
+ 
   console.log(time.getUTCDate())
 
   console.log(timeDifference);
@@ -59,19 +62,31 @@ onBeforeUnmount(() => {
 <template>
   <!--Header main etc normales html-->
   <header>
-    <BaseHeader title="Family Metafuni /Strzyzowski Termine"/>
+    <BaseHeader title="Welcome to Opportunity"/>
   </header>
 
 <main>
   <div v-if="fullData.length !==0">
-  <CardText v-for="(event,index) in fullData"
-    :key=index
-    :cardTitle="event[2]"
-    :date="event[1]"
-    :time="event[0]"
-    :text="event[3]"
-    :remainingTime="calculateRemainingTime(event)">
-  </CardText>
+    <CardText v-for="(event, index) in fullData.slice().sort((a, b) => {
+  const timeDifferenceA = calculateRemainingTime(a);
+  const timeDifferenceB = calculateRemainingTime(b);
+
+  if (timeDifferenceA !== timeDifferenceB) {
+    return timeDifferenceA - timeDifferenceB;
+  } else {
+    // Falls timeDifference gleich ist, sortiere nach time
+    const timeA = new Date(`${a[1]} ${a[0]}`).getTime();
+    const timeB = new Date(`${b[1]} ${b[0]}`).getTime();
+    return timeA - timeB;
+  }
+})"
+:key="index"
+:cardTitle="event[2]"
+:date="event[1]"
+:time="event[0]"
+:text="event[3]"
+:remainingTime="calculateRemainingTime(event)">
+</CardText>
 </div>
 
 <div v-else>

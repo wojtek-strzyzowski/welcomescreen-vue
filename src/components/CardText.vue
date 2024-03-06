@@ -1,6 +1,6 @@
 <script setup>
-defineProps(['cardTitle','time', 'text', 'date','remainingTime']);
-
+defineProps(['cardTitle','time', 'text', 'date','remainingTime','days']);
+import AppTime from '@/App.vue';
 
 </script>
 
@@ -9,7 +9,10 @@ defineProps(['cardTitle','time', 'text', 'date','remainingTime']);
       <div class="inner-card">
             <div class="card-date">
                 <p>{{ date }}</p>
-                <p>noch{{ remainingTime }} Tag(e)</p>
+               
+                <p v-if="remainingTime === 1">noch {{ remainingTime }} Tag</p> 
+                <p v-else>noch {{ remainingTime }} Tage</p> 
+
             </div>
             
             <div class="card-time">
