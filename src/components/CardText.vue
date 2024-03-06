@@ -36,6 +36,7 @@ import AppTime from '@/App.vue';
 div, p, h2 {
     margin: 0;
     font-size: 26px;
+    word-break: break-all;
     padding: 2px;
 }
 .card{
@@ -47,8 +48,8 @@ div, p, h2 {
     size: 28px;
     top: 37px;
     left: 40px; 
-    width: 100%;
-    max-width: 950px;
+    /* width: 100%; */
+    max-width: 900px;
     height: fit-content;
     top: 276px;
     left: 60px;
@@ -58,8 +59,8 @@ div, p, h2 {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    width: 100%;
-    max-width: 950px;
+    /* width: 100%; */
+    max-width: 900px;
     height: fit-content;
     top: 37px;
     left: 40px;
